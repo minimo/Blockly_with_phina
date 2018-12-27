@@ -2,7 +2,7 @@
 * gulpfile.js
 */
 
-const BUILD_FILENAME = 'jfk.js'
+const BUILD_FILENAME = 'main_app.js'
 
 const gulp = require('gulp');
 const concat = require('gulp-concat');
@@ -14,20 +14,11 @@ const replace = require('gulp-replace');
 
 gulp.task('default', ['build']);
 
-gulp.task('build', function() {
+gulp.task('build', ['blockly_copy'], function() {
   gulp.src(['./src/**/*.js'])
     .pipe(sourcemaps.init())  // ソースマップを初期化
     .pipe(concat(BUILD_FILENAME))
     // .pipe(uglify())
-    .pipe(sourcemaps.write()) // ソースマップの作成
-    .pipe(gulp.dest('./_build'));
-});
-
-gulp.task('release', function() {
-  gulp.src(['./src/**/*.js'])
-    .pipe(sourcemaps.init())  // ソースマップを初期化
-    .pipe(concat(BUILD_FILENAME))
-    .pipe(uglify())
     .pipe(sourcemaps.write()) // ソースマップの作成
     .pipe(gulp.dest('./_build'));
 });
@@ -39,29 +30,13 @@ gulp.task("watch", function() {
   gulp.watch(targets, ['build']);
 });
 
-//難読化
-gulp.task("uglify", function() {
-  return gulp.src('./_build/' + BUILD_FILENAME)
-    .pipe(stripDebug())
-    .pipe(uglify({ mangle: false }))
-    .pipe(rename({
-      extname: ".min.js"
-    }))
-    .pipe(gulp.dest("./_build"));
-});
-
-//index.htmlがjfk.min.jsを読み込む様に変更
-gulp.task('release', ['uglify'], function () {
-  return gulp
-    .src(['./_build/index.html'])
-    .pipe(replace('<script src="jfk.js"></script>', '<script src="jfk.min.js"></script>'))
-    .pipe(gulp.dest('./_build/'))
-});
-
-//index.htmlがjfk.jsを読み込む様に変更
-gulp.task('develop', function () {
-  return gulp
-    .src(['./_build/index.html'])
-    .pipe(replace('<script src="jfk.min.js"></script>', '<script src="jfk.js"></script>'))
-    .pipe(gulp.dest('./_build/'))
+//Blocklyのjsをbundleへコピー
+gulp.task("blockly_copy", function () {
+  return gulp.src([
+    'blockly/blockly_compressed.js',
+    'blockly/blocks_compressed.js',
+    'blockly/javascript_compressed.js',
+    'blockly/msg/js/ja.js',
+  ], { base: 'blockly' })
+    .pipe(gulp.dest('_bundle'));
 });
