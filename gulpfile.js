@@ -14,6 +14,9 @@ const replace = require('gulp-replace');
 
 gulp.task('default', ['build']);
 
+gulp.task("test", function () {
+});
+
 gulp.task('build', ['blockly_copy'], function() {
   gulp.src(['./src/**/*.js'])
     .pipe(sourcemaps.init())  // ソースマップを初期化
@@ -24,13 +27,11 @@ gulp.task('build', ['blockly_copy'], function() {
 });
 
 gulp.task("watch", function() {  
-  var targets = [
-    './src/**/*.js',
-  ];
+  var targets = ['./src/**/*.js'];
   gulp.watch(targets, ['build']);
 });
 
-//Blocklyのjsをbundleへコピー
+//Blocklyのjsを"_bundle"へコピー
 gulp.task("blockly_copy", function () {
   return gulp.src([
     'blockly/blockly_compressed.js',
@@ -40,3 +41,5 @@ gulp.task("blockly_copy", function () {
   ], { base: 'blockly' })
     .pipe(gulp.dest('_bundle'));
 });
+
+
