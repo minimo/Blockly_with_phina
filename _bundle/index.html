@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>blockly test</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+
+    <xml id="toolbox" style="display: true">
+      <!-- 必要なブロックを並べる -->
+      <category name="じょうけん" colour="#55aa55">
+        <block type="controls_if"></block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+      </category>
+      <category name="ぶき" colour="#aa5555">
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_boolean"></block>
+      </category>
+      <category name="いどう／とくぎ" colour="#5555aa">
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </category>
+    </xml>
+
+    <div id="main_console" style="width: 100%; height: 500px;">
+      <div id="blockly" style="width: 70%; height: 500px;">
+        <div id="blocklyHeader" style="width: 100%; height: 50px;">ヘッダ</div>
+        <div id="blocklyDiv" style="width: 100%; height: 450px;"></div>
+      </div>
+      <div id="canvasDiv" style="width: 29%; height: 500px;">
+        <canvas id="world" style="width: 100%; height: 500px;"></canvas>
+      </div>
+      <textarea id="outputArea" style="width: 98%; height: 300px;"></textarea>
+    </div>
+
+    <script src="blockly_compressed.js"></script>
+    <script src="blocks_compressed.js"></script>
+    <script src="javascript_compressed.js"></script>
+    <script src="ja.js"></script>
+
+    <script src="libs/phina.js"></script>
+    <script src="main_app.js"></script>
+
+  </body>
+</html>

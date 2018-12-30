@@ -14,16 +14,13 @@ const replace = require('gulp-replace');
 
 gulp.task('default', ['build']);
 
-gulp.task("test", function () {
-});
-
 gulp.task('build', ['blockly_copy'], function() {
   gulp.src(['./src/**/*.js'])
     .pipe(sourcemaps.init())  // ソースマップを初期化
     .pipe(concat(BUILD_FILENAME))
     // .pipe(uglify())
     .pipe(sourcemaps.write()) // ソースマップの作成
-    .pipe(gulp.dest('./_build'));
+    .pipe(gulp.dest('./_bundle'));
 });
 
 gulp.task("watch", function() {  
@@ -38,8 +35,7 @@ gulp.task("blockly_copy", function () {
     'blockly/blocks_compressed.js',
     'blockly/javascript_compressed.js',
     'blockly/msg/js/ja.js',
-  ], { base: 'blockly' })
-    .pipe(gulp.dest('_bundle'));
+  ]).pipe(gulp.dest('_bundle'));
 });
 
 

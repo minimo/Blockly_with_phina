@@ -1,0 +1,25 @@
+
+const workspace = Blockly.inject('blocklyDiv', {
+  toolbox: document.getElementById('toolbox'),
+  horizontalLayout: true,
+  allowUndoRedo: true,
+});
+Blockly.mainWorkspace.undo(true);
+
+function ShowCode(e) {
+  const code = Blockly.JavaScript.workspaceToCode(workspace);
+  document.getElementById("outputArea").value = code;
+  console.log(e);
+}
+
+//workspaceのリスナーへ登録
+workspace.addChangeListener(ShowCode);
+
+function undoAction() {
+  Blockly.mainWorkspace.undo(false);
+}
+function redoAction() {
+  Blockly.mainWorkspace.undo(true);
+}
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIjAxMF9tYWluL2Jsb2NrbHlJbmplY3QuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwiZmlsZSI6Im1haW5fYXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG5jb25zdCB3b3Jrc3BhY2UgPSBCbG9ja2x5LmluamVjdCgnYmxvY2tseURpdicsIHtcbiAgdG9vbGJveDogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Rvb2xib3gnKSxcbiAgaG9yaXpvbnRhbExheW91dDogdHJ1ZSxcbiAgYWxsb3dVbmRvUmVkbzogdHJ1ZSxcbn0pO1xuQmxvY2tseS5tYWluV29ya3NwYWNlLnVuZG8odHJ1ZSk7XG5cbmZ1bmN0aW9uIFNob3dDb2RlKGUpIHtcbiAgY29uc3QgY29kZSA9IEJsb2NrbHkuSmF2YVNjcmlwdC53b3Jrc3BhY2VUb0NvZGUod29ya3NwYWNlKTtcbiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJvdXRwdXRBcmVhXCIpLnZhbHVlID0gY29kZTtcbiAgY29uc29sZS5sb2coZSk7XG59XG5cbi8vd29ya3NwYWNl44Gu44Oq44K544OK44O844G455m76YyyXG53b3Jrc3BhY2UuYWRkQ2hhbmdlTGlzdGVuZXIoU2hvd0NvZGUpO1xuXG5mdW5jdGlvbiB1bmRvQWN0aW9uKCkge1xuICBCbG9ja2x5Lm1haW5Xb3Jrc3BhY2UudW5kbyhmYWxzZSk7XG59XG5mdW5jdGlvbiByZWRvQWN0aW9uKCkge1xuICBCbG9ja2x5Lm1haW5Xb3Jrc3BhY2UudW5kbyh0cnVlKTtcbn1cbiJdfQ==
