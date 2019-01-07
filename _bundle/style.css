@@ -26,6 +26,8 @@
   height: 500px;
   display: inline-block;
   background-color: #aa99cc;
+  text-align: center;
+  vertical-align: top;
 }
 
 #world {
