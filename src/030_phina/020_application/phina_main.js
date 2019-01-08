@@ -1,30 +1,24 @@
 phina.globalize();
 
+let SC_W, SC_H;
+
 // メイン処理
 phina.main(function() {
   // アプリケーション生成
   var scenes =[{
-    className: 'TitleScene',
-    label: 'title',
-  　nextLabel: 'select'
-  },
-  {
-    className: 'StageSelectScene',
-    label: 'select',
-    nextLabel: 'main'
-  },
-  {
-    className: 'MainScene',
     label: 'main',
-    nextLabel: 'select'
+    className: 'MainScene',
   }];
 
   const canvasDiv = document.getElementById('canvasDiv');
   const width = canvasDiv.getBoundingClientRect().width;
   const height = canvasDiv.getBoundingClientRect().height;
 
+  SC_W = width;
+  SC_H = height;
+
   let app = GameApp({
-    startLabel: 'title',
+    startLabel: 'main',
     // assets: ASSETS,
     domElement: document.getElementById("phinaCanvas"),
     width: width,

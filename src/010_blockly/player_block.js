@@ -4,7 +4,7 @@ Blockly.Blocks['player_block'] = {
         .appendField("Player");
     this.appendStatementInput("NAME")
         .setCheck(null);
-    this.setColour(230);
+    this.setColour(120);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -12,6 +12,6 @@ Blockly.Blocks['player_block'] = {
 
 Blockly.JavaScript['player_block'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
-  var code = 'player.run = () => {\n' + statements_name + '};';
+  var code = 'function player_run() {\n' + statements_name + '};';
   return code;
 };

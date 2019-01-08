@@ -12,17 +12,17 @@
     </xml>
     <!-- ツールボックスに必要なブロックを並べる -->
     <xml id="toolbox" style="display: true">
-      <category name="じょうけん" colour="#55aa55">
+      <category name="論理" colour="#55aa55">
         <block type="controls_if"></block>
         <block type="controls_whileUntil"></block>
         <block type="controls_for"></block>
       </category>
-      <category name="ぶき" colour="#aa5555">
+      <category name="思考" colour="#aa5555">
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
       </category>
-      <category name="いどう／とくぎ" colour="#5555aa">
+      <category name="変数" colour="#5555aa">
         <block type="text"></block>
         <block type="text_print"></block>
       </category>
@@ -37,7 +37,8 @@
         <canvas id="phinaCanvas" style="width: 100%; height: 500px;"></canvas>
         <!-- <test></test> -->
       </div>
-      <textarea id="outputArea" style="width: 98%; height: 300px;"></textarea>
+      <saveload></saveload>
+      <textarea id="outputArea" style="width: 98%; height: 300px;" readonly></textarea>
     </div>
 
     <script src="blockly_compressed.js"></script>
